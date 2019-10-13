@@ -125,7 +125,7 @@ namespace insertBD
         //Metodos para asignar valores a las variables de manera aleatoria pero controlada
         private string varNoTiket()
         {
-            return NoTiket = idnom + "" + numeroRandom(0,tuplas);
+            return NoTiket = idnom + "" + numeroRandom(1,tuplas);
         }
 
         private string varidTienda()
