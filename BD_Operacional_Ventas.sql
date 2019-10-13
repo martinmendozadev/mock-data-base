@@ -109,13 +109,12 @@ INSERT INTO tiendas VALUES
 
 SELECT count(NoTicket) FROM ventas;
 SELECT*FROM ventas;
-SELECT*FROM ventas  WHERE NoTicket='TK3';
+SELECT*FROM ventas  WHERE NoTicket='TK100';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 
 SELECT * FROM ventas 
 WHERE DATE(fecha) BETWEEN '2018-01-01 23:00:00' AND '2019-10-20 23:59:59';
-
 
 DROP TABLE ventas;
 DROP DATABASE BD_Operacional_Ventas;
