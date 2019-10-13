@@ -15,11 +15,11 @@ namespace insertBD
         //Iniciaice las variales globales, cada tipo de variable corresponde a el tipo de dato de la BD.
         MySqlConnection Conexion = new MySqlConnection("Server=localhost; User id=root; Database=BD_Operacional_Ventas; Password=;");
         String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK";
-        int precio_venta = 0, cantidad = 0, idnum = 0, copiasTiket=1;
+        int precio_venta = 0, cantidad = 0, tuplas=0;
         Random numRan = new Random();
         DateTime fecha = new DateTime();
 
-        //Arreglos de PKs de las otras tuplas
+        //Arreglos de PKs de las otras tablas
         String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10",
                                "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
                                "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
@@ -36,68 +36,64 @@ namespace insertBD
                            12,123,546,6,72,23,56,234,12,34};
 
         //Método para insertar en la TABLA VENTAS recibe por paramentro el numero de tuplas a insertar.
-        public void ejecutar(int a, ProgressBar progreso)
+        public void ejecutar(int tuplas, ProgressBar progreso)
         {
+            this.tuplas = tuplas;
             try
             {
-                Conexion.Open();        //Abro conexion
-                progreso.Maximum = a;   //Valor maximo de la barra de progreso
-
-                for(int index = 0;index < a;index++)
+                Conexion.Open();               //Abro conexion
+                progreso.Maximum = tuplas;     //Valor maximo de la barra de progreso
+                
+                for (int i = 0; i < tuplas; i++) //Ciclo para repetir el numero de tikets aleatorio.
                 {
-                    idnum++;            //Varible útil para ir incrementando el valor de NoTiket
-                    copiasTiket = numeroRandom(0, 10);
+                    llenadoVariables();         //Le asigno nuevos valores a las variables para después incertarlos.
+                    
+                    //Instruccion SQL para insertar en la BD.
+                    MySqlCommand comando1 = new MySqlCommand("INSERT INTO ventas values (@NoTiket,@idTienda,@idProducto,@cantidad,@precio_venta,@fecha)");
+                    //Cargo mi instruccion SQL a Conexion.
+                    comando1.Connection = Conexion;
 
-                    for (int i = 0; i < copiasTiket; i++) //Ciclo para repetir el numero de tikets aleatorio.
-                    {
-                        llenadoVariables(); //Le asigno nuevos valores a las variables para después incertarlos.
+                    //Asigno valores a los paremetros de la sentencia SQL
+                    MySqlParameter parametro1 = new MySqlParameter();
+                    parametro1.ParameterName = "@NoTiket";
+                    parametro1.Value = NoTiket;
 
-                        //Instruccion SQL para insertar en la BD.
-                        MySqlCommand comando1 = new MySqlCommand("INSERT INTO ventas values (@NoTiket,@idTienda,@idProducto,@cantidad,@precio_venta,@fecha)");
-                        //Cargo mi instruccion SQL a Conexion.
-                        comando1.Connection = Conexion;
+                    MySqlParameter parametro2 = new MySqlParameter();
+                    parametro2.ParameterName = "@idTienda";
+                    parametro2.Value = idTienda;
 
-                        //Asigno valores a los paremetros de la sentencia SQL
-                        MySqlParameter parametro1 = new MySqlParameter();
-                        parametro1.ParameterName = "@NoTiket";
-                        parametro1.Value = NoTiket;
+                    MySqlParameter parametro3 = new MySqlParameter();
+                    parametro3.ParameterName = "@idProducto";
+                    parametro3.Value = idProducto;
 
-                        MySqlParameter parametro2 = new MySqlParameter();
-                        parametro2.ParameterName = "@idTienda";
-                        parametro2.Value = idTienda;
+                    MySqlParameter parametro4 = new MySqlParameter();
+                    parametro4.ParameterName = "@cantidad";
+                    parametro4.Value = cantidad;
 
-                        MySqlParameter parametro3 = new MySqlParameter();
-                        parametro3.ParameterName = "@idProducto";
-                        parametro3.Value = idProducto;
+                    MySqlParameter parametro5 = new MySqlParameter();
+                    parametro5.ParameterName = "@precio_venta";
+                    parametro5.Value = precio_venta;
 
-                        MySqlParameter parametro4 = new MySqlParameter();
-                        parametro4.ParameterName = "@cantidad";
-                        parametro4.Value = cantidad;
+                    MySqlParameter parametro6 = new MySqlParameter();
+                    parametro6.ParameterName = "@fecha";
+                    parametro6.Value = fecha;
 
-                        MySqlParameter parametro5 = new MySqlParameter();
-                        parametro5.ParameterName = "@precio_venta";
-                        parametro5.Value = precio_venta;
+                    //Cargo cada valor de los pareametros al comando SQL
+                    comando1.Parameters.Add(parametro1);
+                    comando1.Parameters.Add(parametro2);
+                    comando1.Parameters.Add(parametro3);
+                    comando1.Parameters.Add(parametro4);
+                    comando1.Parameters.Add(parametro5);
+                    comando1.Parameters.Add(parametro6);
 
-                        MySqlParameter parametro6 = new MySqlParameter();
-                        parametro6.ParameterName = "@fecha";
-                        parametro6.Value = fecha;
-
-                        //Cargo cada valor de los pareametros al comando SQL
-                        comando1.Parameters.Add(parametro1);
-                        comando1.Parameters.Add(parametro2);
-                        comando1.Parameters.Add(parametro3);
-                        comando1.Parameters.Add(parametro4);
-                        comando1.Parameters.Add(parametro5);
-                        comando1.Parameters.Add(parametro6);
-
-                        //Ejecuto la sentencia SQL
-                        comando1.ExecuteNonQuery();
-                    }
+                    //Ejecuto la sentencia SQL
+                    comando1.ExecuteNonQuery();
+                    
                     //ProgressBar Ingremento
                     progreso.Value++;
                 }
                 //Envio mensaje en caso de que todo haya salido bien
-                MessageBox.Show(a + " Tuplas Insertadas Correctamente", "Base de Datos");
+                MessageBox.Show(tuplas + " Tuplas Insertadas Correctamente", "Base de Datos");
                 //Cierro la conexion a la BD
                 Conexion.Close();
 
@@ -129,7 +125,7 @@ namespace insertBD
         //Metodos para asignar valores a las variables de manera aleatoria pero controlada
         private string varNoTiket()
         {
-            return NoTiket = idnom + "" + idnum;
+            return NoTiket = idnom + "" + numeroRandom(0,tuplas);
         }
 
         private string varidTienda()
@@ -169,6 +165,5 @@ namespace insertBD
 
             return fecha;
         }
-
     }
 }
