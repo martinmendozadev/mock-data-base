@@ -109,7 +109,7 @@ INSERT INTO tiendas VALUES
 
 SELECT count(NoTicket) FROM ventas;
 SELECT*FROM ventas;
-SELECT*FROM ventas  WHERE NoTicket='TK100';
+SELECT*FROM ventas  WHERE NoTicket='TK1';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 

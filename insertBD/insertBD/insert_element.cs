@@ -46,7 +46,7 @@ namespace insertBD
                 for(int index = 0;index < a;index++)
                 {
                     idnum++;            //Varible útil para ir incrementando el valor de NoTiket
-                    copiasTiket = numeroRandom(0, 10);
+                    copiasTiket = numeroRandom(1, 10);
 
                     for (int i = 0; i < copiasTiket; i++) //Ciclo para repetir el numero de tikets aleatorio.
                     {
