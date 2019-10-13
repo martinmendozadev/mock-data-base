@@ -67,7 +67,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 127);
+            this.label3.Location = new System.Drawing.Point(35, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 3;
@@ -85,6 +85,7 @@
             this.progreso.Name = "progreso";
             this.progreso.Size = new System.Drawing.Size(232, 23);
             this.progreso.TabIndex = 5;
+            this.progreso.Visible = false;
             // 
             // Form1
             // 

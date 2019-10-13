@@ -14,8 +14,9 @@ namespace insertBD
 
         //Iniciaice las variales globales, cada tipo de variable corresponde a el tipo de dato de la BD.
         MySqlConnection Conexion = new MySqlConnection("Server=localhost; User id=root; Database=BD_Operacional_Ventas; Password=;");
-        String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK";
+        String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK", prueba="";
         int precio_venta = 0, cantidad = 0, idnum = 1;
+        Random numRan = new Random();
         DateTime fecha;
 
         //Arreglos de PKs de las otras tuplas
@@ -23,14 +24,16 @@ namespace insertBD
                                "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
                                "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
                                "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39", "T40",
-                               "T41", "T42", "T43", "T44", "T45"
-                             };
+                               "T41", "T42", "T43", "T44", "T45"};
+
         String[] idProductos = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10",
                                  "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20",
                                  "P21", "P22", "P23", "P24", "P25", "P26", "P27", "P28", "P29", "P30"};
 
         //Arreglo de precios
-        int[] precios = { };
+        Int32[] precios = {12,54,76,12,456,78,96,123,125,23,
+                           12,75,245,76,23,45,234,47,34,52,
+                           12,123,546,6,72,23,56,234,12,34};
 
         //Método para insertar en la TABLA VENTAS recibe por paramentro el numero de tuplas a insertar.
         public void ejecutar(int a, ProgressBar progreso)
@@ -105,53 +108,54 @@ namespace insertBD
         //Metodo que redirecciona la asignacion de variables a submetodos.
         private void llenadoVariables()
         {
-            NoTiket = var1();
-            idTienda = var2();
-            idProducto = var3();
-            cantidad = var4();
-            precio_venta = var5();
-            fecha = var6();
+            NoTiket = varNoTiket();
+            idTienda = varidTienda();
+            idProducto = varidProducto();
+            cantidad = varCantidad();
+            fecha = varFecha();
         }
 
         //Método que genera un numero ranjo entre un intervalo
         private Int32 numeroRandom(int min, int max)
         {
-            Random numRan = new Random();
+            Int32 rand = numRan.Next(min, max);
 
-            return numRan.Next(min, max);
+            return rand;
         }
 
         //Metodos para asignar valores a las variables de manera aleatoria pero controlada
-        private string var1()
+        private string varNoTiket()
         {
             return NoTiket = idnom + "" + idnum;
         }
 
-        private string var2()
+        private string varidTienda()
         {
             idTienda = idTiendas[numeroRandom(0, idTiendas.Length)];
 
             return idTienda;
         }
 
-        private string var3()
+        private string varidProducto()
         {
-            idProducto = idProductos[numeroRandom(0, idProductos.Length)];
+            int numero = numeroRandom(0, idProductos.Length);
+            idProducto = idProductos[numero];
+            precio_venta = varPrecio_venta(numero);
 
             return idProducto;
         }
 
-        private int var4()
+        private int varCantidad()
         {
             return cantidad = numeroRandom(1, 20);
         }
 
-        private int var5()
+        private int varPrecio_venta(int a)
         {
-            return precio_venta = numeroRandom(1, 1000);
+            return precio_venta = precios[a];
         }
 
-        private DateTime var6()
+        private DateTime varFecha()
         {
             Int32 dia = numeroRandom(1, 31);
             Int32 mes = numeroRandom(1, 12);

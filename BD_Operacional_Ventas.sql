@@ -81,6 +81,7 @@ INSERT INTO tiendas VALUES
 	('T19','Miscealanea de la Estacion','Guerrero','Chilpancingo','sur'),
 	('T20','Miscealanea Doña Melanie','Baja California','Mexicali','norte'),
 	('T21','Variedades Doña Martha','Veracruz','Xalapa','centro'),
+    ('T22','Variedades Doña Martha 2','Oaxaca','Oaxaca','centro'),
 	('T23','Abastos Don José Luis','Quintana Roo','Chetumal','sur'),
 	('T24','Variedades De Alfredo','Veracruz','Merida','sur'),
 	('T25','Miscealanea Doña María José y Alexa','Sinaloa','Culiaca Rosales','norte'),
@@ -108,7 +109,7 @@ INSERT INTO tiendas VALUES
 
 SELECT count(NoTicket) FROM ventas;
 SELECT*FROM ventas;
-SELECT*FROM ventas  WHERE NoTicket='TK1';
+SELECT*FROM ventas  WHERE idProducto='P20';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 
