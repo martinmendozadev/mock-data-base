@@ -19,8 +19,18 @@ namespace insertBD
         DateTime fecha;
 
         //Arreglos de PKs de las otras tuplas
-        String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10" };
-        String[] idProductos = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10" };
+        String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10",
+                               "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
+                               "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
+                               "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39", "T40",
+                               "T41", "T42", "T43", "T44", "T45"
+                             };
+        String[] idProductos = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10",
+                                 "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20",
+                                 "P21", "P22", "P23", "P24", "P25", "P26", "P27", "P28", "P29", "P30"};
+
+        //Arreglo de precios
+        int[] precios = { };
 
         //Método para insertar en la TABLA VENTAS recibe por paramentro el numero de tuplas a insertar.
         public void ejecutar(int a, ProgressBar progreso)

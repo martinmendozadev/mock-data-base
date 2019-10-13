@@ -81,7 +81,7 @@
             // 
             // progreso
             // 
-            this.progreso.Location = new System.Drawing.Point(38, 171);
+            this.progreso.Location = new System.Drawing.Point(38, 164);
             this.progreso.Name = "progreso";
             this.progreso.Size = new System.Drawing.Size(232, 23);
             this.progreso.TabIndex = 5;
