@@ -1,4 +1,4 @@
-CREATE DATABASE BD_Operacional_Ventas;
+﻿CREATE DATABASE BD_Operacional_Ventas;
 USE BD_Operacional_Ventas;
 
 CREATE TABLE productos 
@@ -15,15 +15,21 @@ CREATE TABLE tiendas
     estado VARCHAR(35), 
     region VARCHAR(35));
     
+CREATE TABLE tiempo (
+	idTiempo VARCHAR(6) PRIMARY KEY, 
+    fecha DATETIME
+);
+    
 CREATE TABLE ventas (
 	NoTicket VARCHAR(6), 
     idTienda VARCHAR(7), 
     idProducto VARCHAR(7), 
     cantidad TINYINT, 
     precio_venta SMALLINT, 
-    fecha DATETIME,
+    idTiempo DATETIME,
     FOREIGN KEY (idTienda) REFERENCES tiendas (idTienda),
-    FOREIGN KEY (idProducto) REFERENCES productos (idProducto)
+    FOREIGN KEY (idProducto) REFERENCES productos (idProducto)/*,
+    FOREIGN KEY (idTiempo) REFERENCES tiempo (idTiempo)*/
 );
   
 INSERT INTO productos VALUES 
@@ -107,14 +113,38 @@ INSERT INTO tiendas VALUES
 	('T45','Abastos Don Raúl','Morelos','Cuernavaca','sur')
 ;
 
+INSERT INTO tiempo VALUES
+	('TM1','2018-01-01 00:00:00'),
+	('TM2','2018-01-01 10:00:00'),
+	('TM3','2018-01-01 23:59:59')
+;
+
+INSERT INTO ventas VALUES
+	('TK1','T1','P1',10,50,'TM1'),
+	('TK1','T1','P2',100,150,'TM2'),
+	('TK1','T1','P3',1,5,'TM3'),
+    ('TK2','T2','P1',10,50,'TM1'),
+	('TK3','T2','P2',100,150,'TM1'),
+	('TK2','T2','P3',1,5,'TM1')
+;
+
+
 SELECT count(NoTicket) FROM ventas;
 SELECT*FROM ventas;
 SELECT*FROM ventas  WHERE NoTicket='TK1';
+SELECT*FROM ventas  WHERE fecha='2018-01-01 00:00:00';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 
 SELECT * FROM ventas 
-WHERE DATE(fecha) BETWEEN '2018-01-01 23:00:00' AND '2019-10-20 23:59:59';
+WHERE DATE(fecha) BETWEEN '2018-01-01 00:00:00' AND '2018-01-02 23:59:59';
+
+SELECT*FROM ventas
+WHERE fecha >= '2018-01-01' AND fecha <='2018-01-02';
+
+SELECT * FROM ventas, tiempo
+WHERE ventas.idTiempo=tiempo.idTiempo AND
+tiempo.fecha BETWEEN '2018-01-01 00:00:00' AND '2018-01-01 00:00:59';
 
 DROP TABLE ventas;
 DROP DATABASE BD_Operacional_Ventas;
