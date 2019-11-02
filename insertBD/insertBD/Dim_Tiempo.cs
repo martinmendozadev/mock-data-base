@@ -19,6 +19,9 @@ namespace insertBD
 
         private void btn_generar_Click(object sender, EventArgs e)
         {
+            ConexionDW2 a=new ConexionDW2();
+            a.Abrir();
+            if(a.registrosTiempo()<1){                           
                 btn_generar.Visible = false;
                 button1.Visible = false;
                 label2.Visible = true;
@@ -30,6 +33,10 @@ namespace insertBD
                 label2.Text = "Dim Tiempo Generada correctamente";
                 progreso.Visible = false;
                 button1.Visible = true;
+             }else{
+                MessageBox.Show("La Dimencion Tiempo debe estar vacia para poder Insertar");
+            }
+            a.Cerrar();
             
         }
 

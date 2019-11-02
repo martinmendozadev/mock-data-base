@@ -12,7 +12,7 @@ namespace insertBD
         private String idTiempo = "TM";
         private Int32 num = 0, Semestre=1, Trimestre=1, quincena=1, quincenaAux=1, semanaAux=1, semana=1, diaC=1;
         private DateTime fecha = new DateTime();
-        private ConexionDW conexion = new ConexionDW();
+        private ConexionDW2 conexion = new ConexionDW2();
 
         public void GenerarFecha(ProgressBar progreso)
         {
