@@ -63,7 +63,7 @@ namespace insertBD
                             {
                                 num++;
                                 fecha = new DateTime(2018, mes, dia, hora, 0, 0);
-                                conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, dia, fecha);
+                                conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
                             }
                         }
                         else if (mes % 2 == 1)
@@ -72,13 +72,13 @@ namespace insertBD
                             {
                                 num++;
                                 fecha = new DateTime(2018, mes, dia, hora, 0, 0);
-                                conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, dia, fecha);
+                                conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
                             }
                             else if (dia < 31)
                             {
                                 num++;
                                 fecha = new DateTime(2018, mes, dia, hora, 0, 0);
-                                conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, dia, fecha);
+                                conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
 
                             }
                         }
@@ -86,7 +86,7 @@ namespace insertBD
 
                     //ProgressBar Ingremento
                     progreso.Value++;
-                    diaC = progreso.Value;
+                    diaC++;
                 }
 
             }
