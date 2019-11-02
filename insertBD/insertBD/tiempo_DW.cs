@@ -21,7 +21,7 @@ namespace insertBD
 
             for (Int32 mes = 1; mes < 13; mes++)
             {
-                if (mes == 3 && mes==9)
+                if (mes == 3 || mes==9)
                 {
                     Trimestre++;
                 }

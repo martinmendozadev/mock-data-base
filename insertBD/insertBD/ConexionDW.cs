@@ -11,27 +11,26 @@ using System.Threading.Tasks;
 namespace insertBD
 {
     class ConexionDW{
-        private SqlConnection Con; // Obj Conexion
+        private SqlConnection conectarbd=new SqlConnection(); // Obj Conexion
+        private string cadena = "Data Source=MENDOZA\\SQLEXPRESS;Initial Catalog=Data_WereHouse; Integrated Security=True";
 
         public ConexionDW(){
-            // Contendra los Datos las Conexion.
-            string url =@"Password=123qwe;Persist Security Info=True;User ID=sa;Initial Catalog=DW;Data Source=C-MENDOZA\SQL2012R2";
-            Con.ConnectionString = url;
+            conectarbd.ConnectionString = cadena;
         }
 
         public void Abrir(){ // Metodo para Abrir la Conexion
-            Con.Open();
+            conectarbd.Open();
         }
 
         public void Cerrar(){ // Metodo para Cerrar la Conexion
-            Con.Close();
+            conectarbd.Close();
         }
 
         public Int32 registrosTiempo()
         {
             Int32 registros = 0;
             SqlCommand comando = new SqlCommand("SELECT count(idTiempo) FROM tiempo");
-            comando.Connection = Con;
+            comando.Connection = conectarbd;
             registros = Convert.ToInt32(comando.ExecuteScalar());
 
             return registros;
@@ -40,9 +39,9 @@ namespace insertBD
         public void cargaraTiempo(String idTiempo, Int32 año, Int32 Semestre, Int32 Trimestre, Int32 mes, Int32 quincena, Int32 semana, Int32 dia, DateTime fecha)
         {
             //Instruccion SQL para insertar en la BD.
-            SqlCommand comando = new SqlCommand("INSERT INTO ventas values (@idTiempo,@año,@Semestre,@Trimestre,@mes,@quincena,@semana,@dia,@fecha)");
+            SqlCommand comando = new SqlCommand("INSERT INTO dim_tiempo values (@idTiempo,@año,@Semestre,@Trimestre,@mes,@quincena,@semana,@dia,@fecha)");
             //Cargo mi instruccion SQL a Conexion.
-            comando.Connection = Con;
+            comando.Connection = conectarbd;
 
             //Asigno valores a los paremetros de la sentencia SQL
             SqlParameter parametro1 = new SqlParameter();
@@ -97,7 +96,7 @@ namespace insertBD
         }
 
         public DataSet Ejecutar(string Comando, string Tabla){ // Metodo para Ejecutar Comandos
-            SqlDataAdapter CMD = new SqlDataAdapter(Comando, Con); // Creamos un DataAdapter con el Comando y la Conexion
+            SqlDataAdapter CMD = new SqlDataAdapter(Comando, conectarbd); // Creamos un DataAdapter con el Comando y la Conexion
             DataSet DS = new DataSet(); // Creamos el DataSet que Devolvera el Metodo
             CMD.Fill(DS, Tabla); // Ejecutamos el Comando en la Tabla
         
