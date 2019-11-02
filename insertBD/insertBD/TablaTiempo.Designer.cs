@@ -81,6 +81,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_generar);
             this.Name = "TablaTiempo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Insert Tiempo";
             this.ResumeLayout(false);
             this.PerformLayout();

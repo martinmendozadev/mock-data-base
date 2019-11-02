@@ -22,14 +22,15 @@ namespace insertBD
             ConexionF conexion2=new ConexionF();
             conexion2.abrirConexion();
             if(conexion2.registrosTiempo()<1){
+                btn_generar.Visible = false;
                 label2.Visible=true;
                 progreso.Visible=true;
                 Tiempo TablaTiempo = new Tiempo();
+                progreso.Value = 0;
                 TablaTiempo.GenerarFecha(progreso);
                 MessageBox.Show("Tabla Tiempo Generada Correctamente","Generando Fechas");
                 label2.Text = "Tabla Tiempo Generada";
                 progreso.Visible = false;
-                btn_generar.Visible = false;
             }else{
                 MessageBox.Show("La tabla Tiempo ya está Generada");
             }

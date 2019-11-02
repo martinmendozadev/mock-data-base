@@ -129,22 +129,22 @@ INSERT INTO ventas VALUES
 ;
 
 
-SELECT count(NoTicket) FROM ventas;
+SELECT count(idTiempo) FROM tiempo;
 SELECT*FROM tiempo;
 SELECT*FROM ventas  WHERE NoTicket='TK1';
-SELECT*FROM ventas  WHERE fecha='2018-01-01 00:00:00';
+SELECT*FROM tiempo  WHERE fecha='2018-01-31 00:00:00';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 
 SELECT * FROM ventas 
 WHERE DATE(Idtiempo) BETWEEN '2018-01-01 00:00:00' AND '2018-01-02 23:59:59';
 
-SELECT*FROM ventas
-WHERE fecha >= '2018-01-01' AND fecha <='2018-01-02';
+SELECT*FROM tiempo
+WHERE fecha >= '2018-09-29 23:56:56' AND fecha <='2018-09-31 23:56:56';
 
 SELECT * FROM ventas, tiempo
 WHERE ventas.idTiempo=tiempo.idTiempo AND
-tiempo.fecha BETWEEN '2018-01-01 00:00:00' AND '2018-02-01 00:00:59';
+tiempo.fecha BETWEEN '2018-01-31 00:00:00' AND '2018-02-31 23:59:59';
 
 DROP TABLE ventas;
 DROP TABLE tiempo;
