@@ -9,24 +9,24 @@ namespace insertBD
     class ObVentas
     {
         //Iniciaice las variales globales.
-        String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK";
-        int precio_venta = 0, cantidad = 0, idnum = 0;
-        Random numRan = new Random();
-        DateTime idTiempo = new DateTime();
+        private String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK";
+        private int precio_venta = 0, cantidad = 0, idnum = 1;
+        private Random numRan = new Random();
+        private DateTime idTiempo = new DateTime();
 
         //Arreglos de PKs de las otras tuplas
-        String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10",
+        private String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10",
                                "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
                                "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
                                "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39", "T40",
                                "T41", "T42", "T43", "T44", "T45"};
 
-        String[] idProductos = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10",
+        private String[] idProductos = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10",
                                  "P11", "P12", "P13", "P14", "P15", "P16", "P17", "P18", "P19", "P20",
                                  "P21", "P22", "P23", "P24", "P25", "P26", "P27", "P28", "P29", "P30"};
 
         //Arreglo de precios para productos
-        Int32[] precios = {12,54,76,12,456,78,96,123,125,23,
+        private Int32[] precios = {12,54,76,12,456,78,96,123,125,23,
                            12,75,245,76,23,45,234,47,34,52,
                            12,123,546,6,72,23,56,234,12,34};
 

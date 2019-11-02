@@ -12,10 +12,10 @@ namespace insertBD
     class insert_element
     {
         //Iniciaice las variales globales.
-        int idnum = 0, copiasTiket = 1;
-        Random numRan = new Random();
-        ConexionF conexion = new ConexionF();
-        ObVentas ventas = new ObVentas();
+        private int idnum = 0, copiasTiket = 1;
+        private Random numRan = new Random();
+        private ConexionF conexion = new ConexionF();
+        private ObVentas ventas = new ObVentas();
 
         //Método para insertar en la TABLA VENTAS recibe por paramentro el numero de tuplas a insertar.
         public void ejecutar(int a, ProgressBar progreso)

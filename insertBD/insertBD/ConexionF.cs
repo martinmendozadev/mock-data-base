@@ -11,7 +11,7 @@ namespace insertBD
     class ConexionF
     {
         //Iniciaice variables para la BD.
-        MySqlConnection Conexion;
+        private MySqlConnection Conexion;
 
         public ConexionF(){
             Conexion = new MySqlConnection("Server=localhost; User id=root; Database=BD_Operacional_Ventas; Password=;");
