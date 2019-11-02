@@ -10,9 +10,9 @@ namespace insertBD
     class tiempo_DW
     {
         private String idTiempo = "TM";
-        private Int32 num = 0, Semestre=1, Trimestre=1, quincena=1, quincenaAux=1, semanaAux=1, semana=1, diaC=0;
+        private Int32 num = 0, Semestre=1, Trimestre=1, quincena=1, quincenaAux=1, semanaAux=1, semana=1, diaC=1;
         private DateTime fecha = new DateTime();
-        private ConexionDW2 conexion = new ConexionDW2();
+        private ConexionDW conexion = new ConexionDW();
 
         public void GenerarFecha(ProgressBar progreso)
         {
@@ -30,10 +30,9 @@ namespace insertBD
                     Semestre = 2;
                     Trimestre++;
                 }
-                //MessageBox.Show("Mes: "+mes+"\nResiduo del Mes:"+(mes%2));
+
                 for (Int32 dia = 1; dia < 32; dia++)
                 {
-                    diaC++;
                     semanaAux++;
                     quincenaAux++;
 
@@ -87,6 +86,7 @@ namespace insertBD
 
                     //ProgressBar Ingremento
                     progreso.Value++;
+                    diaC = progreso.Value;
                 }
 
             }
