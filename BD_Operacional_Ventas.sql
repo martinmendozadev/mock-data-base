@@ -1,4 +1,4 @@
-﻿CREATE DATABASE BD_Operacional_Ventas;
+CREATE DATABASE bd_operacional_ventas;
 USE BD_Operacional_Ventas;
 
 CREATE TABLE productos 

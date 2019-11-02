@@ -84,5 +84,16 @@ namespace insertBD
             comando1.ExecuteNonQuery();
         }
 
+        //Select count para saber si praro el Insert en table Ventas
+        public Int32 registros()
+        {
+            Int32 registros = 0;
+            MySqlCommand comando2 = new MySqlCommand("SELECT count(NoTicket) FROM ventas");
+            comando2.Connection = Conexion;
+            registros = Convert.ToInt32(comando2.ExecuteScalar());
+
+            return registros;
+        }
+
     }
 }

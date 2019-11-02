@@ -25,9 +25,10 @@ namespace insertBD
             try
             {
                 Int32 a = Convert.ToInt32(textBox1.Text);
-                insert_element insertar = new insert_element();
+               
                 progreso.Visible = true;        //En caso de poder parsear el valor del textbox inicia el progreso
                 label3.Text = "Insertando...";
+                insert_element insertar = new insert_element();
                 insertar.ejecutar(a, progreso); //Inicio el progreso de Instertar tuplas
                 progreso.Value = 0;             //Reseteo el progresbar
                 progreso.Visible = false;       //Al final de incertar oculto nuevamente el progresbar
