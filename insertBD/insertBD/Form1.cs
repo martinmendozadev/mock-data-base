@@ -27,6 +27,7 @@ namespace insertBD
                 Int32 a = Convert.ToInt32(textBox1.Text);
                
                 progreso.Visible = true;        //En caso de poder parsear el valor del textbox inicia el progreso
+                button2.Visible = false;
                 label3.Text = "Insertando...";
                 insert_element insertar = new insert_element();
                 insertar.ejecutar(a, progreso); //Inicio el progreso de Instertar tuplas
@@ -34,6 +35,7 @@ namespace insertBD
                 progreso.Visible = false;       //Al final de incertar oculto nuevamente el progresbar
                 label3.Text = "";               //Limpio los campos  
                 textBox1.Text = "";
+                button2.Visible = true;
             }
             catch (Exception ex)
             {
@@ -43,6 +45,13 @@ namespace insertBD
             }
 
             button1.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            menu a = new menu();
+            this.Hide();
+            a.Show();
         }
     }
 }

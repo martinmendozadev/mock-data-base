@@ -16,7 +16,7 @@ namespace insertBD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dim_Tiempo());
+            Application.Run(new menu());
         }
     }
 }

@@ -20,6 +20,7 @@ namespace insertBD
         private void btn_generar_Click(object sender, EventArgs e)
         {
                 btn_generar.Visible = false;
+                button1.Visible = false;
                 label2.Visible = true;
                 progreso.Visible = true;
                 tiempo_DW tiempoDW = new tiempo_DW();
@@ -28,7 +29,15 @@ namespace insertBD
                 MessageBox.Show("Dim Tiempo Generada Correctamente", "Fechas");
                 label2.Text = "Dim Tiempo Generada correctamente";
                 progreso.Visible = false;
+                button1.Visible = true;
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            menu a = new menu();
+            this.Hide();
+            a.Show();
         }
     }
 }
