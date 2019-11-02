@@ -26,10 +26,10 @@ CREATE TABLE ventas (
     idProducto VARCHAR(7), 
     cantidad TINYINT, 
     precio_venta SMALLINT, 
-    idTiempo DATETIME,
+    idTiempo VARCHAR(6),
     FOREIGN KEY (idTienda) REFERENCES tiendas (idTienda),
-    FOREIGN KEY (idProducto) REFERENCES productos (idProducto)/*,
-    FOREIGN KEY (idTiempo) REFERENCES tiempo (idTiempo)*/
+    FOREIGN KEY (idProducto) REFERENCES productos (idProducto),
+    FOREIGN KEY (idTiempo) REFERENCES tiempo (idTiempo)
 );
   
 INSERT INTO productos VALUES 
@@ -129,15 +129,13 @@ INSERT INTO ventas VALUES
 ;
 
 
-SELECT count(idTiempo) FROM tiempo;
+SELECT count(idTiempo) FROM ventas;
 SELECT*FROM tiempo;
 SELECT*FROM ventas  WHERE NoTicket='TK1';
 SELECT*FROM tiempo  WHERE fecha='2018-01-31 00:00:00';
 SELECT*FROM tiendas;
 SELECT*FROM productos;
 
-SELECT * FROM ventas 
-WHERE DATE(Idtiempo) BETWEEN '2018-01-01 00:00:00' AND '2018-01-02 23:59:59';
 
 SELECT*FROM tiempo
 WHERE fecha >= '2018-09-29 23:56:56' AND fecha <='2018-09-31 23:56:56';

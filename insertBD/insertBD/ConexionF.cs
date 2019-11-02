@@ -40,7 +40,7 @@ namespace insertBD
         }
 
         //Insert para la Tabla Ventas de la fuente
-        public void cargaraVentas(String NoTiket, String idTienda, String idProducto, int cantidad, int precio_venta, DateTime idTiempo)
+        public void cargaraVentas(String NoTiket, String idTienda, String idProducto, int cantidad, int precio_venta, String idTiempo)
         {
             //Instruccion SQL para insertar en la BD.
             MySqlCommand comando = new MySqlCommand("INSERT INTO ventas values (@NoTiket,@idTienda,@idProducto,@cantidad,@precio_venta,@idTiempo)");

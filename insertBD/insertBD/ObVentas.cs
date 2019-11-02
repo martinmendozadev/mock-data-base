@@ -9,10 +9,9 @@ namespace insertBD
     class ObVentas
     {
         //Iniciaice las variales globales.
-        private String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK";
+        private String NoTiket = "", idTienda = "", idProducto = "", idnom = "TK", idTiempo="", idTM="TM";
         private int precio_venta = 0, cantidad = 0, idnum = 1;
         private Random numRan = new Random();
-        private DateTime idTiempo = new DateTime();
 
         //Arreglos de PKs de las otras tuplas
         private String[] idTiendas = { "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9", "T10",
@@ -79,16 +78,9 @@ namespace insertBD
             return precio_venta = precios[a];
         }
 
-        private DateTime varFecha()
+        private string varFecha()
         {
-            Int32 dia = numeroRandom(1, 29);
-            Int32 mes = numeroRandom(1, 11);
-            Int32 hora = numeroRandom(0, 23);
-            Int32 minuto = numeroRandom(0, 59);
-            Int32 segundo = numeroRandom(0, 59);
-            idTiempo = new DateTime(2018, mes, dia, hora, minuto, segundo);
-
-            return idTiempo;
+            return idTiempo = idTM+""+(numeroRandom(1,8688));;
         }
 
         //Setter y Getters de varibles globales
@@ -116,7 +108,7 @@ namespace insertBD
             return precio_venta;
         }
 
-        public DateTime getidTiempo(){
+        public String getidTiempo(){
             return idTiempo;
         }
     }
