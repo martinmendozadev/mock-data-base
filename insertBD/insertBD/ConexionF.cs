@@ -43,9 +43,9 @@ namespace insertBD
         public void cargaraVentas(String NoTiket, String idTienda, String idProducto, int cantidad, int precio_venta, DateTime idTiempo)
         {
             //Instruccion SQL para insertar en la BD.
-            MySqlCommand comando1 = new MySqlCommand("INSERT INTO ventas values (@NoTiket,@idTienda,@idProducto,@cantidad,@precio_venta,@idTiempo)");
+            MySqlCommand comando = new MySqlCommand("INSERT INTO ventas values (@NoTiket,@idTienda,@idProducto,@cantidad,@precio_venta,@idTiempo)");
             //Cargo mi instruccion SQL a Conexion.
-            comando1.Connection = Conexion;
+            comando.Connection = Conexion;
 
             //Asigno valores a los paremetros de la sentencia SQL
             MySqlParameter parametro1 = new MySqlParameter();
@@ -73,27 +73,61 @@ namespace insertBD
             parametro6.Value = idTiempo;
 
             //Cargo cada valor de los pareametros al comando SQL
-            comando1.Parameters.Add(parametro1);
-            comando1.Parameters.Add(parametro2);
-            comando1.Parameters.Add(parametro3);
-            comando1.Parameters.Add(parametro4);
-            comando1.Parameters.Add(parametro5);
-            comando1.Parameters.Add(parametro6);
+            comando.Parameters.Add(parametro1);
+            comando.Parameters.Add(parametro2);
+            comando.Parameters.Add(parametro3);
+            comando.Parameters.Add(parametro4);
+            comando.Parameters.Add(parametro5);
+            comando.Parameters.Add(parametro6);
 
             //Ejecuto la sentencia SQL
-            comando1.ExecuteNonQuery();
+            comando.ExecuteNonQuery();
         }
 
         //Select count para saber si praro el Insert en table Ventas
         public Int32 registros()
         {
             Int32 registros = 0;
-            MySqlCommand comando2 = new MySqlCommand("SELECT count(NoTicket) FROM ventas");
-            comando2.Connection = Conexion;
-            registros = Convert.ToInt32(comando2.ExecuteScalar());
+            MySqlCommand comando = new MySqlCommand("SELECT count(NoTicket) FROM ventas");
+            comando.Connection = Conexion;
+            registros = Convert.ToInt32(comando.ExecuteScalar());
 
             return registros;
         }
 
+        public Int32 registrosTiempo()
+        {
+            Int32 registros = 0;
+            MySqlCommand comando = new MySqlCommand("SELECT count(idTiempo) FROM tiempo");
+            comando.Connection = Conexion;
+            registros = Convert.ToInt32(comando.ExecuteScalar());
+
+            return registros;
+        }
+
+
+        public void cargaraTiempo(String idTiempo, DateTime fecha)
+        {
+            //Instruccion SQL para insertar en la BD.
+            MySqlCommand comando = new MySqlCommand("INSERT INTO tiempo VALUES (@idTiempo,@fecha)");
+            //Cargo mi instruccion SQL a Conexion.
+            comando.Connection = Conexion;
+
+            //Asigno valores a los paremetros de la sentencia SQL
+            MySqlParameter parametro1 = new MySqlParameter();
+            parametro1.ParameterName = "@idTiempo";
+            parametro1.Value = idTiempo;
+
+            MySqlParameter parametro2 = new MySqlParameter();
+            parametro2.ParameterName = "@fecha";
+            parametro2.Value = fecha;
+
+            //Cargo cada valor de los pareametros al comando SQL
+            comando.Parameters.Add(parametro1);
+            comando.Parameters.Add(parametro2);
+
+            //Ejecuto la sentencia SQL
+            comando.ExecuteNonQuery();
+        }
     }
 }
