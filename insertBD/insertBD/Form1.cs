@@ -21,20 +21,22 @@ namespace insertBD
         {
             button1.Enabled = false;
 
+            //Leeo el  valor de el textbox y lo trato de convertit a INT
             try
             {
                 Int32 a = Convert.ToInt32(textBox1.Text);
                 insert_element insertar = new insert_element();
-                progreso.Visible = true;
+                progreso.Visible = true;        //En caso de poder parsear el valor del textbox inicia el progreso
                 label3.Text = "Insertando...";
-                insertar.ejecutar(a, progreso);
-                progreso.Value = 0;
-                progreso.Visible = false;
-                label3.Text = "";
+                insertar.ejecutar(a, progreso); //Inicio el progreso de Instertar tuplas
+                progreso.Value = 0;             //Reseteo el progresbar
+                progreso.Visible = false;       //Al final de incertar oculto nuevamente el progresbar
+                label3.Text = "";               //Limpio los campos  
                 textBox1.Text = "";
             }
             catch (Exception ex)
             {
+                //En caso de error lo imprimo en pantlla
                 MessageBox.Show(ex.Message + "\n\nIngresa un número entero.");
                 textBox1.Text = "";
             }

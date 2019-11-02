@@ -17,19 +17,21 @@ namespace insertBD
             Conexion = new MySqlConnection("Server=localhost; User id=root; Database=BD_Operacional_Ventas; Password=;");
         }
 
+        //Método para abrir la conexion a la BD
         public void abrirConexion(){
             try{
-                Conexion.Open();        //Abro conexion
+                Conexion.Open();
 
             }catch(Exception ex){
                 MessageBox.Show("Revise la conexion a la BD\n\n"+ex.Message);
             }
         }
 
+        //Método para cerrar la conexion a la BD
         public void cerrarConexion()
         {
             try{
-                Conexion.Close();        //Cierro conexion
+                Conexion.Close();
             }
             catch (Exception ex)
             {
@@ -37,6 +39,7 @@ namespace insertBD
             }
         }
 
+        //Insert para la Tabla Ventas de la fuente
         public void cargaraVentas(String NoTiket, String idTienda, String idProducto, int cantidad, int precio_venta, DateTime idTiempo)
         {
             //Instruccion SQL para insertar en la BD.

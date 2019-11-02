@@ -20,11 +20,11 @@ namespace insertBD
         //Método para insertar en la TABLA VENTAS recibe por paramentro el numero de tuplas a insertar.
         public void ejecutar(int a, ProgressBar progreso)
         {
-            conexion.abrirConexion();
-            progreso.Maximum = a;   //Valor maximo de la barra de progreso
+            conexion.abrirConexion();   //Abro la conexion a la BD
+            progreso.Maximum = a;       //Valor maximo de la barra de progreso
             
             for(int index = 0;index < a;index++){
-                idnum++;            //Varible útil para ir incrementando el valor de NoTiket
+                idnum++;                //Varible útil para ir incrementando el valor de NoTiket
                 copiasTiket = numeroRandom(1, 10);
 
                 for (int i = 0; i < copiasTiket; i++){ //Ciclo para repetir el numero de tikets aleatorio.
@@ -36,11 +36,11 @@ namespace insertBD
                 //ProgressBar Ingremento
                 progreso.Value++;
             }
-            
-            //Envio mensaje en caso de que todo haya salido bien
-            MessageBox.Show(a + " Tuplas Insertadas Correctamente", "Base de Datos");
             //Cierro la conexion a la BD
             conexion.cerrarConexion();
+
+            //Envio mensaje en caso de que todo haya salido bien
+            MessageBox.Show(a + " Tuplas Insertadas Correctamente", "Base de Datos");
         }
 
         private Int32 numeroRandom(int min, int max)

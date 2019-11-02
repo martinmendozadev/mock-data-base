@@ -91,6 +91,7 @@ namespace insertBD
             return idTiempo;
         }
 
+        //Setter y Getters de varibles globales
         public void setidNum(int idnum){
             this.idnum=idnum;
         }
