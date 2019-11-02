@@ -46,7 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDW.cs" />
+    <Compile Include="ConexionDW2.cs" />
     <Compile Include="ConexionF.cs" />
+    <Compile Include="Dim_Tiempo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dim_Tiempo.Designer.cs">
+      <DependentUpon>Dim_Tiempo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +71,10 @@
       <DependentUpon>TablaTiempo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tiempo.cs" />
+    <Compile Include="tiempo_DW.cs" />
+    <EmbeddedResource Include="Dim_Tiempo.resx">
+      <DependentUpon>Dim_Tiempo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

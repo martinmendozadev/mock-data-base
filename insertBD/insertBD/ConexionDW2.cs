@@ -1,22 +1,19 @@
-﻿/* Importamos las Librerias Necesarias para Trabajar */
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace insertBD
 {
-    class ConexionDW{
-        private SqlConnection Con; // Obj Conexion
+    class ConexionDW2
+    {
+        private MySqlConnection Con; // Obj Conexion
 
-        public ConexionDW(){
+        public ConexionDW2(){
             // Contendra los Datos las Conexion.
-            string url =@"Password=123qwe;Persist Security Info=True;User ID=sa;Initial Catalog=DW;Data Source=C-MENDOZA\SQL2012R2";
-            Con.ConnectionString = url;
+            Con = new MySqlConnection("Server=localhost; User id=root; Database=BD_werehouse; Password=;");
         }
 
         public void Abrir(){ // Metodo para Abrir la Conexion
@@ -30,7 +27,7 @@ namespace insertBD
         public Int32 registrosTiempo()
         {
             Int32 registros = 0;
-            SqlCommand comando = new SqlCommand("SELECT count(idTiempo) FROM tiempo");
+            MySqlCommand comando = new MySqlCommand("SELECT count(idTiempo) FROM dim_tiempo");
             comando.Connection = Con;
             registros = Convert.ToInt32(comando.ExecuteScalar());
 
@@ -40,44 +37,44 @@ namespace insertBD
         public void cargaraTiempo(String idTiempo, Int32 año, Int32 Semestre, Int32 Trimestre, Int32 mes, Int32 quincena, Int32 semana, Int32 dia, DateTime fecha)
         {
             //Instruccion SQL para insertar en la BD.
-            SqlCommand comando = new SqlCommand("INSERT INTO ventas values (@idTiempo,@año,@Semestre,@Trimestre,@mes,@quincena,@semana,@dia,@fecha)");
+            MySqlCommand comando = new MySqlCommand("INSERT INTO dim_tiempo values (@idTiempo,@año,@Semestre,@Trimestre,@mes,@quincena,@semana,@dia,@fecha)");
             //Cargo mi instruccion SQL a Conexion.
             comando.Connection = Con;
 
             //Asigno valores a los paremetros de la sentencia SQL
-            SqlParameter parametro1 = new SqlParameter();
+            MySqlParameter parametro1 = new MySqlParameter();
             parametro1.ParameterName = "@idTiempo";
             parametro1.Value = idTiempo;
 
-            SqlParameter parametro2 = new SqlParameter();
+            MySqlParameter parametro2 = new MySqlParameter();
             parametro2.ParameterName = "@año";
             parametro2.Value = año;
 
-            SqlParameter parametro3 = new SqlParameter();
+            MySqlParameter parametro3 = new MySqlParameter();
             parametro3.ParameterName = "@Semestre";
             parametro3.Value = Semestre;
 
-            SqlParameter parametro4 = new SqlParameter();
+            MySqlParameter parametro4 = new MySqlParameter();
             parametro4.ParameterName = "@Trimestre";
             parametro4.Value = Trimestre;
 
-            SqlParameter parametro5 = new SqlParameter();
+            MySqlParameter parametro5 = new MySqlParameter();
             parametro5.ParameterName = "@mes";
             parametro5.Value = mes;
 
-            SqlParameter parametro6 = new SqlParameter();
+            MySqlParameter parametro6 = new MySqlParameter();
             parametro6.ParameterName = "@quincena";
             parametro6.Value = quincena;
 
-            SqlParameter parametro7 = new SqlParameter();
+            MySqlParameter parametro7 = new MySqlParameter();
             parametro7.ParameterName = "@semana";
             parametro7.Value = semana;
 
-            SqlParameter parametro8 = new SqlParameter();
+            MySqlParameter parametro8 = new MySqlParameter();
             parametro8.ParameterName = "@dia";
             parametro8.Value = dia;
 
-            SqlParameter parametro9 = new SqlParameter();
+            MySqlParameter parametro9 = new MySqlParameter();
             parametro9.ParameterName = "@fecha";
             parametro9.Value = fecha;
 
@@ -95,14 +92,5 @@ namespace insertBD
             //Ejecuto la sentencia SQL
             comando.ExecuteNonQuery();
         }
-
-        public DataSet Ejecutar(string Comando, string Tabla){ // Metodo para Ejecutar Comandos
-            SqlDataAdapter CMD = new SqlDataAdapter(Comando, Con); // Creamos un DataAdapter con el Comando y la Conexion
-            DataSet DS = new DataSet(); // Creamos el DataSet que Devolvera el Metodo
-            CMD.Fill(DS, Tabla); // Ejecutamos el Comando en la Tabla
-        
-            return DS; // Regresamos el DataSet
-        }
-
-    } // Fin de la Clase
+    }
 }
