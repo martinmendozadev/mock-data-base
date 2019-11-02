@@ -19,7 +19,7 @@ namespace insertBD
 
         private void btn_generar_Click(object sender, EventArgs e)
         {
-            ConexionDW2 a=new ConexionDW2();
+            ConexionDW a=new ConexionDW();
             a.Abrir();
             if(a.registrosTiempo()<1){                           
                 btn_generar.Visible = false;
