@@ -29,7 +29,7 @@ namespace insertBD
         public Int32 registrosTiempo()
         {
             Int32 registros = 0;
-            SqlCommand comando = new SqlCommand("SELECT count(idTiempo) FROM tiempo");
+            SqlCommand comando = new SqlCommand("SELECT count(idTiempo) FROM dim_tiempo");
             comando.Connection = conectarbd;
             registros = Convert.ToInt32(comando.ExecuteScalar());
 
