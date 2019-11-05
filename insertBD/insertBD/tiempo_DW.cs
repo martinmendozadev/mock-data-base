@@ -46,16 +46,15 @@ namespace insertBD
                         quincenaAux = 0;
                     }
 
-                    for (Int32 hora = 0; hora < 24; hora++)
-                    {
-                        if (mes == 2)
+                      if (mes == 2)
                         {
                             if (dia < 29)
                             {
                                 num++;
-                                fecha = new DateTime(2018, mes, dia, hora, 0, 0);
+                                fecha = new DateTime(2018, mes, dia);
                                 conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
 
+                                diaC++;
                             }
                         }
                         else if (mes % 2 == 0)
@@ -63,9 +62,10 @@ namespace insertBD
                             if (dia < 31)
                             {
                                 num++;
-                                fecha = new DateTime(2018, mes, dia, hora, 0, 0);
+                                fecha = new DateTime(2018, mes, dia);
                                 conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
-                                
+
+                                diaC++;
                             }
                         }
                         else if (mes % 2 == 1)
@@ -73,24 +73,24 @@ namespace insertBD
                             if (mes != 9 && mes != 11)
                             {
                                 num++;
-                                fecha = new DateTime(2018, mes, dia, hora, 0, 0);
+                                fecha = new DateTime(2018, mes, dia);
                                 conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
-                                
+
+                                diaC++;
                             }
                             else if (dia < 31)
                             {
                                 num++;
-                                fecha = new DateTime(2018, mes, dia, hora, 0, 0);
+                                fecha = new DateTime(2018, mes, dia);
                                 conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
-                                
 
+                                diaC++;
                             }
                         }
-                    }
+                    
 
                     //ProgressBar Ingremento
                     progreso.Value++;
-                    diaC++;
                 }
 
             }
