@@ -70,15 +70,7 @@ namespace insertBD
                         }
                         else if (mes % 2 == 1)
                         {
-                            if (mes != 9 && mes != 11)
-                            {
-                                num++;
-                                fecha = new DateTime(2018, mes, dia);
-                                conexion.cargaraTiempo((idTiempo + "" + num),2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
-
-                                diaC++;
-                            }
-                            else if (dia < 31)
+                            if (dia<32)
                             {
                                 num++;
                                 fecha = new DateTime(2018, mes, dia);
@@ -86,6 +78,15 @@ namespace insertBD
 
                                 diaC++;
                             }
+                            else/* if (dia < 31)
+                            {
+                                num++;
+                                fecha = new DateTime(2018, mes, dia);
+                                conexion.cargaraTiempo((idTiempo + "" + num), 2018, Semestre, Trimestre, mes, quincena, semana, diaC, fecha);
+
+                                diaC++;
+                            }*/
+                                MessageBox.Show("Mes :"+mes+"\nDia:"+dia);
                         }
                     
 
