@@ -134,7 +134,10 @@ SELECT*FROM tiempo;
 SELECT*FROM ventas  WHERE NoTicket='TK1';
 SELECT*FROM tiempo  WHERE fecha='2018-01-31 00:00:00';
 SELECT*FROM ventas;
-SELECT*FROM productos;
+
+SELECT Noticket, idTienda, sum(cantidad) as Cantidad_Unidades, sum(precio_venta) as Precio_Venta, idTiempo
+FROM Ventas
+GROUP BY Noticket, idTienda;
 
 
 SELECT*FROM tiempo
