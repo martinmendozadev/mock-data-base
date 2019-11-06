@@ -121,6 +121,8 @@ INSERT INTO tiempo VALUES
 
 INSERT INTO ventas VALUES
 	('TK1','T1','P1',10,50,'TM1'),
+    ('TK1','T1','P1',10,50,'TM1'),
+    ('TK1','T1','P1',10,50,'TM2'),
 	('TK1','T1','P2',100,150,'TM2'),
 	('TK1','T1','P3',1,5,'TM3'),
     ('TK2','T2','P1',10,50,'TM1'),
@@ -135,9 +137,9 @@ SELECT*FROM ventas  WHERE NoTicket='TK1';
 SELECT*FROM tiempo  WHERE fecha='2018-01-31 00:00:00';
 SELECT*FROM ventas;
 
-SELECT Noticket, idTienda, sum(cantidad) as Cantidad_Unidades, sum(precio_venta) as Precio_Venta, idTiempo
+SELECT idTienda,idProducto, sum(cantidad) as cantUnidades, sum(precio_venta) as cantPrecio, idTiempo
 FROM Ventas
-GROUP BY Noticket, idTienda;
+GROUP BY Noticket, idTienda, idProducto;
 
 
 SELECT*FROM tiempo
