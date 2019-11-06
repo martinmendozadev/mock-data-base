@@ -34,7 +34,7 @@ namespace insertBD
                 progreso.Visible = false;
                 button1.Visible = true;
             }else{
-                MessageBox.Show("La tabla Tiempo ya está Generada");
+                MessageBox.Show("La tabla Tiempo tiene datos insertados,\n para generarla, necesita estar vacia la tabla Tiempo");
             }
             conexion2.cerrarConexion();
         }
